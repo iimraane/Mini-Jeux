@@ -2,11 +2,14 @@ import random
 import sys  # Importez le module sys
 import os
 from deflist_random import demander_nombre_random
+from deflist_random import demander_action_random
 
 number = random.randint(1, 1000)
 repertoire_script = os.path.dirname(os.path.abspath(__file__))
 nom_fichier = "Menu_Jeu.py"
 chemin_fichier = os.path.join(repertoire_script, nom_fichier)
+nom_fichier2 = "import_random.py"
+chemin_fichier2 = os.path.join(repertoire_script, nom_fichier2)
 
 print("Bienvenue dans le jeu des nombres")
 print()
@@ -72,5 +75,20 @@ for i in range(0, essais): # Boucle infini
      break
 
 if essais_print == 0:
+    print()
     print("Vous n'avez plus d'essais !")
     print(f"Le nombre etait: {number}...")
+    print()
+
+print()
+print("Voulez vous rejouez ? (Oui/Non)")
+print()
+
+replay = demander_action_random()
+
+if replay.lower() == "oui":
+    os.system(f"python \"{chemin_fichier2}\"")
+else:
+    os.system(f"python \"{chemin_fichier}\"")
+
+
