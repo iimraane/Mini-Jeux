@@ -2,17 +2,9 @@ import random
 import sys  # Importez le module sys
 import os
 number = random.randint(1, 1000)
-
-print("Bienvenue dans le jeu des nombres")
-print()
-print("Je vais choisir un nombre entre 1 et 1000, tu devras le trouver en utilisant les indices a ta disposition")
-print("Entrez le nombre d'essais maximum souhaités ou '200484' pour revenir au menu principale")
-print()
-
 repertoire_script = os.path.dirname(os.path.abspath(__file__))
 nom_fichier = "Menu_Jeu.py"
 chemin_fichier = os.path.join(repertoire_script, nom_fichier)
-
 
 def demander_nombre(prompt='> ', min_val=1):
     try:
@@ -25,6 +17,12 @@ def demander_nombre(prompt='> ', min_val=1):
         # Si une exception ValueError est levée, cela signifie que l'entrée n'est pas un nombre
             print("Ce n'est pas un nombre valide. Veuillez réessayer.")
             return demander_nombre()
+
+print("Bienvenue dans le jeu des nombres")
+print()
+print("Je vais choisir un nombre entre 1 et 1000, tu devras le trouver en utilisant les indices a ta disposition")
+print("Entrez le nombre d'essais maximum souhaités ou '200484' pour revenir au menu principale")
+print()
 
 essais = demander_nombre()
 

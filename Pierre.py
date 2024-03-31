@@ -40,24 +40,24 @@ chemin_fichier = os.path.join(repertoire_script, nom_fichier) # On remplace le n
 nom_fichier2 = "Pierre.py"
 chemin_fichier2 = os.path.join(repertoire_script, nom_fichier2)
 
-win = 0
-win_bot = 0
+points_user = 0
+points_bot = 0
 
 print()
 print("Bienvenue dans le jeu du pierre, feuille, ciseaux")
-print("Pour commencez, ecrivez le nombre de manches voulue")
+print("Pour commencez, ecrivez le nombre de point(s) maximum voulu(s)")
 print()
                                     
-manche = demander_nombre()
+points_max = demander_nombre()
 
 print()
-print(f"Vous aller jouer durant {manche} manche(s)")
+print(f"Le premier arrivé a {points_max} point(s) gagne !")
 print("Maintenant vous pouvez ecrire 'Pierre', 'Feuille', 'Ciseaux'")
 print("Je vous dirais le resultat ensuite")
 print()
 print("Pour revenir au menu ecrivez 'Back'")
 
-for i in range(manche):
+while True:
     entree_utilisateur = demander_action()
     number = random.randint(0, 2)
     choice = possible[number]
@@ -66,8 +66,8 @@ for i in range(manche):
     if entree_utilisateur == choice:
         print()
         print("Égalité ! Nous avons tous les deux choisi", choice)
-        win = win + 0 # Sa sers a rien mais c'est pour mieux visualiser
-        print(f"Il y'a {win} point(s) pour toi et {win_bot} point(s) pour moi !")
+        points_user = points_user + 0 # Sa sers a rien mais c'est pour mieux visualiser
+        print(f"Il y'a {points_user} point(s) pour toi et {points_bot} point(s) pour moi !")
         print()
 
 
@@ -76,39 +76,38 @@ for i in range(manche):
         (entree_utilisateur == "ciseaux" and choice == "feuille"):
         print()
         print("Vous avez gagné ! Vous avez choisi", entree_utilisateur, "et j'ai choisi", choice)
-        win = win + 1 # On ajoute 1 au taux de win
-        print(f"Il y'a {win} point(s) pour toi et {win_bot} point(s) pour moi !")
+        points_user = points_user + 1 # On ajoute 1 au taux de win
+        print(f"Il y'a {points_user} point(s) pour toi et {points_bot} point(s) pour moi !")
         print()
-
 
     elif entree_utilisateur == "back":
         os.system(f"python \"{chemin_fichier}\"") # On lance le menu
 
+    elif points_bot == points_max:
+        break
+
+    elif points_user == points_max:
+        break
+
     else:
         print()
         print("Vous avez perdu ! Vous avez choisi", entree_utilisateur, "et j'ai choisi", choice)
-        win_bot = win_bot + 1 # Sa sers a rien mais c'est pour mieux visualiser
-        print(f"Il y'a {win} point(s) pour toi et {win_bot} point(s) pour moi !")
+        points_bot = points_bot + 1 # Sa sers a rien mais c'est pour mieux visualiser
+        print(f"Il y'a {points_user} point(s) pour toi et {points_bot} point(s) pour moi !")
         print()
 
-if win > win_bot:
+if points_user > points_bot:
     print()
-    print(f"Vous avez gagner, vous avez {win} point(s) et moi {win_bot} point(s)")
-    print("Maintenant ecrivez 'back' pour retourner au menu ou 'replay' pour rejouer")
-    print()
-
-elif win == win_bot:
-    print()
-    print(f"Egalité nous avons tout les deux {win} point(s)")
+    print(f"Vous avez gagner, vous avez {points_user} point(s) et moi {points_bot} point(s)")
     print("Maintenant ecrivez 'back' pour retourner au menu ou 'replay' pour rejouer")
     print()
 
 else:
     print()
-    print(f"Vous avez perdu, J'ai {win_bot} point(s) et vous {win} point(s)")
+    print(f"Vous avez perdu, J'ai {points_bot} point(s) et vous {points_user} point(s)")
     print("Maintenant ecrivez 'back' pour retourner au menu ou 'replay' pour rejouer")
     print()
-    
+
 while True:
     final_shot = demander_action2()
     
