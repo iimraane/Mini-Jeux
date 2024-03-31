@@ -1,7 +1,7 @@
 import random
 import sys  # Importez le module sys
 import os
-from def_list import demander_nombre_random
+from deflist_random import demander_nombre_random
 
 number = random.randint(1, 1000)
 repertoire_script = os.path.dirname(os.path.abspath(__file__))

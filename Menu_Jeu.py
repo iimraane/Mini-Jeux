@@ -1,6 +1,6 @@
 # En gros faut faire un menu pour le P, F, C et le c+ c-
 import os
-from def_list import demander_nombre_menu
+from deflist_menu import demander_nombre_menu
 
 repertoire_script = os.path.dirname(os.path.abspath(__file__))
 nom_fichier1 = "Pierre.py"

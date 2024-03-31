@@ -1,8 +1,8 @@
 import random
 import os
-from def_list import demander_action2_pierre 
-from def_list import demander_action_pierre
-from def_list import demander_nombre_pierre
+from deflist_pierre import demander_action2_pierre 
+from deflist_pierre import demander_action_pierre
+from deflist_pierre import demander_nombre_pierre
 
 possible = ["feuille", "pierre", "ciseaux"]
 repertoire_script = os.path.dirname(os.path.abspath(__file__)) # Detecter ou le fichier se trouve
