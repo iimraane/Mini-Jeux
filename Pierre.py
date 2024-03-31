@@ -2,6 +2,7 @@ import random
 import os
 
 def demander_action():
+    """Demander à l'utilisateur son choix de pierre, feuille ou ciseaux."""
     while True:
         # Demander à l'utilisateur son choix et le mettre en minuscules
         entree_utilisateur = input("Votre choix : ").lower()
@@ -12,6 +13,7 @@ def demander_action():
             print("Ce n'est pas une entrée valide. Veuillez réessayer.")  # Message d'erreur
 
 def demander_action2():
+    """Demander à l'utilisateur s'il veut rejouer ou revenir au menu."""
     while True:
         # Demander à l'utilisateur son choix et le mettre en minuscules
         entree_utilisateur = input("Votre choix : ").lower()
@@ -22,6 +24,7 @@ def demander_action2():
             print("Ce n'est pas une entrée valide. Veuillez réessayer.")  # Message d'erreur
 
 def demander_nombre(prompt='> ', min_val=1, max_val=3):
+    """Demander à l'utilisateur un nombre entre min_val et max_val."""
     try:
         # Tentez de convertir l'entrée en un nombre entier
         entree_utilisateur = int(input("Votre choix : "))
@@ -32,7 +35,7 @@ def demander_nombre(prompt='> ', min_val=1, max_val=3):
         # Si une exception ValueError est levée, cela signifie que l'entrée n'est pas un nombre
         print("Ce n'est pas un nombre valide. Veuillez réessayer.")
         return demander_nombre()
-    
+
 possible = ["feuille", "pierre", "ciseaux"]
 repertoire_script = os.path.dirname(os.path.abspath(__file__)) # Detecter ou le fichier se trouve
 nom_fichier = "Menu_Jeu.py" # Une simple variable ^^
@@ -76,25 +79,22 @@ while True:
         (entree_utilisateur == "ciseaux" and choice == "feuille"):
         print()
         print("Vous avez gagné ! Vous avez choisi", entree_utilisateur, "et j'ai choisi", choice)
-        points_user = points_user + 1 # On ajoute 1 au taux de win
+        points_user = points_user + 1 # On ajoute 1 au taux de win de l'user
         print(f"Il y'a {points_user} point(s) pour toi et {points_bot} point(s) pour moi !")
         print()
 
     elif entree_utilisateur == "back":
         os.system(f"python \"{chemin_fichier}\"") # On lance le menu
 
-    elif points_bot == points_max:
-        break
-
-    elif points_user == points_max:
-        break
-
     else:
         print()
         print("Vous avez perdu ! Vous avez choisi", entree_utilisateur, "et j'ai choisi", choice)
-        points_bot = points_bot + 1 # Sa sers a rien mais c'est pour mieux visualiser
+        points_bot = points_bot + 1 # on ajoute 1 win au bot
         print(f"Il y'a {points_user} point(s) pour toi et {points_bot} point(s) pour moi !")
         print()
+
+    if points_bot == points_max or points_user == points_max:
+        break  # Sortir de la boucle principale si l'un des joueurs atteint le score maximum
 
 if points_user > points_bot:
     print()
@@ -116,9 +116,6 @@ while True:
     
     elif final_shot == "replay":
         os.system(f"python \"{chemin_fichier2}\"")
-
-    
-
 
 
 
