@@ -1,6 +1,7 @@
 # En gros faut faire un menu pour le P, F, C et le c+ c-
 import os
 from deflist_menu import demander_nombre_menu
+import sys
 
 repertoire_script = os.path.dirname(os.path.abspath(__file__))
 nom_fichier1 = "Pierre.py"
@@ -29,4 +30,4 @@ while True:
         os.system(f"python \"{chemin_fichier2}\"")
     
     elif entree_utilisateur == 3:
-         os.system(f"python \"{chemin_fichier1}\"")
+        sys.exit()
