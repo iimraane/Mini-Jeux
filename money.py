@@ -3,6 +3,7 @@ from deflist_money import demander_nombre_money1
 from deflist_money import demander_nombre_money2
 from deflist_money import demander_action_money
 import time
+import sys
 
 repertoire_script = os.path.dirname(os.path.abspath(__file__))
 nom_fichier1 = "Menu_Jeu.py"
@@ -13,19 +14,19 @@ chemin_fichier2 = os.path.join(repertoire_script, nom_fichier2)
 
 print()
 print("Bienvenue dans le jeu de la monnaie")
-print("Vous aller me donner un prix, une somme et je vous ferais le rendu")
+print("Vous aller me donner un prix et une somme que vous donner au vendeur et il vous feras le rendu")
 print()
 
 prix = demander_nombre_money1()
 
 print()
 print(f"Votre prix est de: {prix}€")
-print("Maintenant ecrivez la somme que vous me donnez")
+print("Maintenant ecrivez la somme que vous donnez au vendeur")
 print()
 
 paiement = demander_nombre_money2()
 print()
-print(f"Votre paiement est de: {paiement}€")
+print(f"Vous avez donné(e): {paiement}€ au vendeur")
 print()
 
 def money(prix, paiement):
@@ -52,12 +53,21 @@ def print_change(rendu):
         for billet, quantite in rendu.items():
             print(f"{quantite} billet(s) de {billet}€")
     else:
-        print("Pas de monnaie à rendre.")
+        print("...")
+        time.sleep(1.5)
+        print("t'es serieux ?!")
+        time.sleep(1.5)
+        print("Sale voleur, je te donne pas l'article pour la peine...")
+        time.sleep(1.5)
+        print("Bye bye sale voleur !")
+        time.sleep(1.5)
+        sys.exit()
 
 if give_it is not None:
     print_change(give_it)
-else:
+elif give_it == 0:
     print("Pas de monnaie à rendre.")
+
 
 time.sleep(1)
 
