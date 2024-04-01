@@ -31,9 +31,19 @@ print()
 
 def money(prix, paiement):
 
-    if prix >= paiement:
-        return 0
-    
+    if prix > paiement:
+        print("...")
+        time.sleep(1.5)
+        print("t'es serieux ?!")
+        time.sleep(1.5)
+        print("Sale voleur t'as cru c'etait le magasin a ton père ?!")
+        time.sleep(1.5)
+        print("Vasy rend moi ça !")
+        time.sleep(1.5)
+        print("On se revoit au commissariat")
+        time.sleep(1.5)
+        sys.exit()
+
     rendu = {}
     difference = paiement - prix
     monnaie = [100, 50, 20, 10, 5, 2, 1]
@@ -53,20 +63,13 @@ def print_change(rendu):
         for billet, quantite in rendu.items():
             print(f"{quantite} billet(s) de {billet}€")
     else:
-        print("...")
-        time.sleep(1.5)
-        print("t'es serieux ?!")
-        time.sleep(1.5)
-        print("Sale voleur, je te donne pas l'article pour la peine...")
-        time.sleep(1.5)
-        print("Bye bye sale voleur !")
-        time.sleep(1.5)
-        sys.exit()
+        print("Pas de rendu de monnaie")
 
 if give_it is not None:
     print_change(give_it)
 elif give_it == 0:
     print("Pas de monnaie à rendre.")
+
 
 
 time.sleep(1)
