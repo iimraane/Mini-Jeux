@@ -69,9 +69,9 @@ for i in range(0, essais): # Boucle infini
     
 
     else:
+     print()
      print("C'est la bonne réponse !")
      print(f"Vous avez reussis en {essais - essais_print} essais !")
-     print("Entrez ~160463~ pour terminer le jeu")
      break
 
 if essais_print == 0:
